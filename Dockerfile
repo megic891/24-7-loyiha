@@ -12,11 +12,12 @@ RUN npm run build
 
 FROM node:18-slim AS production
 
-WORKDIR /app
+WORKDIR /app  
 COPY package*.json ./
 RUN npm install --only=production
 
 COPY --from=builder /app/dist ./dist
+
 
 EXPOSE 3000
 
